@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
 #include <ilcplex/ilocplex.h>
 using namespace std;
 
@@ -33,22 +33,22 @@ int main()
 		IloExpr out(env);
 		for (int i = 0; i < f; i ++)
 			out += x[i][j];
-		transportProblem.add(out <= deposits[j]);
+		transportProblem.add(out == deposits[j]);
 	}
 
-	IloExpr objective(end);
+	IloExpr objective(env);
 	for (int i = 0; i < f; i ++)
 		for (int j = 0; j < d; j ++)
 			objective += x[i][j] * costs[i][j];
 	transportProblem.add(IloMinimize(env, objective));
 
 	cplex.solve();
-	printf("minCost: %d\n", cplex.getObjValue());
+	printf("minCost: %.3lf\n", cplex.getObjValue());
 
-	IloArray<IloIntArray> solutions(env, f);
+	IloArray<IloNumArray> solutions(env, f);
 	for (int i = 0; i < f; i ++)
 	{
-		solutions[i] = IloIntArray(env, d);
+		solutions[i] = IloNumArray(env, d);
 		cplex.getValues(solutions[i], x[i]);
 	}
 	
@@ -56,7 +56,7 @@ int main()
 	{
 		printf("From factory %d:\n", i);
 		for (int j = 0; j < d; j ++)
-			printf("\t%d to deposit %d\n", solutions[i][j], j);
+			printf("\t%.1lf to deposit %d\n", solutions[i][j], j);
 	}
 
 	env.end();
