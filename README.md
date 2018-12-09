@@ -17,3 +17,5 @@
         * Example: make TransportProblem/transportProblem
       * If there's no compilation error: it will generate a yourFile.run
   * Run it using: ./yourFile.run
+* ### Lint/Autocomplete:
+  * In order to use lint/autocomplete in any IDE, you need to provide the "include" folder of the library you will use. But, for some reason, CPLEX include had a small bug that broke VisualCode's lint (and probably any other IDE). I fixed and it's [here](https://github.com/NelsonGomesNeto/Operations-Research/Fixed%include). Just copy and paste it into the "include" folder of your compiler.
