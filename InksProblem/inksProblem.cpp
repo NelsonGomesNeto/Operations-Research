@@ -11,7 +11,7 @@ int main()
   IloEnv env;
   IloModel inksProblem(env, "Inks Problem");
   IloCplex cplex(inksProblem);
-  // Reading Statement:
+  // Statement Data:
     int inksSize, componentsSize, solutionsSize; scanf("%d %d %d", &inksSize, &componentsSize, &solutionsSize);
     double components[componentsSize]; for (int i = 0; i < componentsSize; i ++) scanf("%lf", &components[i]);
     Solution solutions[solutionsSize];
@@ -34,18 +34,6 @@ int main()
       }
       scanf("%lf", &inks[i].liters);
     }
-  printf("%d %d %d\n", inksSize, componentsSize, solutionsSize);
-  for (int i = 0; i < componentsSize; i ++) printf("%.3lf%c", components[i], i < componentsSize - 1 ? ' ' : '\n');
-  for (int i = 0; i < solutionsSize; i ++)
-  {
-    for (int j = 0; j < componentsSize; j ++) printf("%.3lf ", solutions[i].compPercent[j]);
-    printf("%.3lf\n", solutions[i].price);
-  }
-  for (int i = 0; i < inksSize; i ++)
-  {
-    for (int j = 0; j < componentsSize; j ++) printf("%.3lf ", inks[i].minCompPercent[j]);
-    printf("%.3lf\n", inks[i].liters);
-  }
   
   // Decision Variables:
     IloArray<IloIntVarArray> xSolutions(env, inksSize), xComponents(env, inksSize);
@@ -86,21 +74,21 @@ int main()
     inksProblem.add(IloMinimize(env, cost));
 
   // Get solution:
-  cplex.solve();
-  printf("minCost: %.3lf\n", cplex.getObjValue());
-  IloArray<IloNumArray> solutionsAnswer(env, inksSize), componentsAnswer(env, inksSize);
-  for (int i = 0; i < inksSize; i ++)
-  {
-    solutionsAnswer[i] = IloNumArray(env, solutionsSize), componentsAnswer[i] = IloNumArray(env, componentsSize);
-    cplex.getValues(solutionsAnswer[i], xSolutions[i]);
-    cplex.getValues(componentsAnswer[i], xComponents[i]);
-  }
-  for (int j = 0; j < inksSize; j ++)
-  {
-    printf("Ink %d:\n", j + 1);
-    for (int i = 0; i < solutionsSize; i ++) printf("\tSolution %d: %.0lf\n", i + 1, solutionsAnswer[j][i]);
-    for (int i = 0; i < componentsSize; i ++) printf("\tComponent %d: %.0lf\n", i + 1, componentsAnswer[j][i]);
-  }
+    cplex.solve();
+    printf("minCost: %.3lf\n", cplex.getObjValue());
+    IloArray<IloNumArray> solutionsAnswer(env, inksSize), componentsAnswer(env, inksSize);
+    for (int i = 0; i < inksSize; i ++)
+    {
+      solutionsAnswer[i] = IloNumArray(env, solutionsSize), componentsAnswer[i] = IloNumArray(env, componentsSize);
+      cplex.getValues(solutionsAnswer[i], xSolutions[i]);
+      cplex.getValues(componentsAnswer[i], xComponents[i]);
+    }
+    for (int j = 0; j < inksSize; j ++)
+    {
+      printf("Ink %d:\n", j + 1);
+      for (int i = 0; i < solutionsSize; i ++) printf("\tSolution %d: %.0lf\n", i + 1, solutionsAnswer[j][i]);
+      for (int i = 0; i < componentsSize; i ++) printf("\tComponent %d: %.0lf\n", i + 1, componentsAnswer[j][i]);
+    }
 
   env.end();
   return(0);
