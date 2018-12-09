@@ -21,8 +21,10 @@ int main()
 
   cplex.solve();
   printf("maxProfit: %.3lf\n", cplex.getObjValue());
-  IloNumArray solution(env, 2); cplex.getValues(solution, x);
-  printf("AMGS: %.0lf, RE: %.0lf\n", solution[0], solution[1]);
+  IloNumArray solutions(env, 2); cplex.getValues(solutions, x);
+  printf("AMGS: %.0lf, RE: %.0lf\n", solutions[0], solutions[1]);
+
+  env.end();
 
   return(0);
 }
