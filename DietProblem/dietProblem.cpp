@@ -37,6 +37,8 @@ int main()
   IloNumArray solutions(env, ingredients); cplex.getValues(solutions, x);
   for (int i = 0; i < ingredients; i ++)
     printf("ingredient %d: %.0lf\n", i + 1, solutions[i]);
+  
+  env.end();
 
   return(0);
 }
