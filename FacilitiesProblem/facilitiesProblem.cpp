@@ -57,8 +57,6 @@ int main()
     {
       solutionServe[i] = IloNumArray(env, clients);
       cplex.getValues(solutionServe[i], serveClient[i]);
-    }
-    for (int i = 0; i < deposits; i ++)
       if (solutionInstall[i])
       {
         printf("Install deposit %d:\n", i + 1);
@@ -66,6 +64,7 @@ int main()
           if (solutionServe[i][j])
             printf("\tServe client %d\n", j + 1);
       }
+    }
 
   env.end();
   return(0);

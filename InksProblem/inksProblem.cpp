@@ -11,6 +11,7 @@ int main()
   IloEnv env;
   IloModel inksProblem(env, "Inks Problem");
   IloCplex cplex(inksProblem);
+
   // Statement Data:
     int inksSize, componentsSize, solutionsSize; scanf("%d %d %d", &inksSize, &componentsSize, &solutionsSize);
     double components[componentsSize]; for (int i = 0; i < componentsSize; i ++) scanf("%lf", &components[i]);
