@@ -1,0 +1,37 @@
+Found incumbent of value 0.000000 after 0.00 sec. (0.00 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 36 rows and 28 columns.
+Reduced MIP has 4 rows, 8 columns, and 12 nonzeros.
+Reduced MIP has 0 binaries, 8 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.02 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 4 rows, 8 columns, and 12 nonzeros.
+Reduced MIP has 0 binaries, 8 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.01 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (0.06 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.01 sec. (0.06 ticks)
+maxFlow: 5
+0:
+	2 to 2
+	3 to 3
+1:
+	0 to 4
+	2 to 5
+2:
+	2 to 4
+	1 to 5
+3:
+	2 to 6
+4:
+	3 to 6
+5:

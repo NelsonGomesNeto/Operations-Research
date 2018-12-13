@@ -1,0 +1,36 @@
+Found incumbent of value 2.0660353e+21 after 0.00 sec. (0.00 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 2 rows, 6 columns, and 10 nonzeros.
+Reduced MIP has 0 binaries, 6 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.00 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 2 rows, 6 columns, and 10 nonzeros.
+Reduced MIP has 0 binaries, 6 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.01 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.00 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                       2.06604e+21        0.0000           100.00%
+*     0     0      integral     0      179.0000      179.0000        2    0.00%
+Elapsed time = 0.01 sec. (0.03 ticks, tree = 0.00 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (0.03 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.01 sec. (0.03 ticks)
+minCost: 179.000
+ingredient 1: -0
+ingredient 2: -0
+ingredient 3: -0
+ingredient 4: -0
+ingredient 5: 5
+ingredient 6: 2
