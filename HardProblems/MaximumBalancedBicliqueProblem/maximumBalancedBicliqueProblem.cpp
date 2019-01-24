@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <set>
 #include <ilcplex/ilocplex.h>
 using namespace std;
 
@@ -9,11 +10,20 @@ int main()
   IloCplex cplex(maximumBalancedBicliqueProblem);
 
   // Statement Data:
-    int v1, v2, e; scanf("%d %d %d", &v1, &v2, &e);
-    int edges[e][2]; for (int i = 0; i < e; i ++) { scanf("%d %d", &edges[i][0], &edges[i][1]); edges[i][0] --, edges[i][1] --; }
+    int v1, v2, e, rev; scanf("%d %d %d", &v1, &v2, &e); rev = v1*v2 - e;
+    set<pair<int, int>> edges, revEdges; int u, v;
+    for (int i = 0; i < e; i ++)
+    {
+      scanf("%d %d", &u, &v); u --, v --;
+      edges.insert({u, v});
+    }
+    for (int i = 0; i < v1; i ++)
+      for (int j = 0; j < v2; j ++)
+        if (!edges.count({i, j}))
+          revEdges.insert({i, j});
 
   // Decision Variables:
-    IloBoolVarArray vLeft(env, v1), vRight(env, v2), edgesVar(env, e);
+    IloBoolVarArray vLeft(env, v1), vRight(env, v2);
 
   // Restrictions:
     IloExpr vLeftSum(env), vRightSum(env);
@@ -22,26 +32,20 @@ int main()
     // Bipartite:
       maximumBalancedBicliqueProblem.add(vLeftSum == vRightSum);
     // Clique:
-      IloExpr edgeWithVerticesCount(env);
-      for (int i = 0; i < e; i ++)
-      {
-        edgeWithVerticesCount += edgesVar[i] + vLeft[edges[i][0]] + vRight[edges[i][1]];
-      }
-      IloExpr neededEdges(env); for (int i = 0; i < v1; i ++) neededEdges += 2 * vLeft[i];
-      maximumBalancedBicliqueProblem.add(neededEdges == edgeWithVerticesCount - (2 * e));
-      // derived from complete edge formula: n * (n - 1) / 2
+      for (auto edge: revEdges)
+        maximumBalancedBicliqueProblem.add(vLeft[edge.first] + vRight[edge.second] <= 1);
 
   // Objective Function:
-    IloExpr totalVertices(env); totalVertices = 2 * vLeftSum;
-    maximumBalancedBicliqueProblem.add(IloMaximize(env, totalVertices));
+    maximumBalancedBicliqueProblem.add(IloMaximize(env, vLeftSum + vRightSum));
 
   // Get Solution:
     cplex.solve();
     printf("MaximumVertices: %.0lf\n", cplex.getObjValue());
-      // printf("Here\n");
-    // IloNumArray solutions(env, ingredients); cplex.getValues(solutions, x);
-    // for (int i = 0; i < ingredients; i ++)
-    //   printf("ingredient %d: %.0lf\n", i + 1, solutions[i]);
+    IloNumArray vLeftSolution(env, v1), vRightSolution(env, v2);
+    cplex.getValues(vLeftSolution, vLeft); cplex.getValues(vRightSolution, vRight);
+    printf("Left:"); for (int i = 0; i < v1; i ++) if (vLeftSolution[i]) printf(" %d", i + 1);
+    printf("\nRight:"); for (int i = 0; i < v2; i ++) if (vRightSolution[i]) printf(" %d", i + 1);
+    printf("\nEdges:\n"); for (auto edge: edges) if (vLeftSolution[edge.first] && vRightSolution[edge.second]) printf("\t%d %d\n", edge.first + 1, edge.second + 1);
   
   env.end();
   return(0);
