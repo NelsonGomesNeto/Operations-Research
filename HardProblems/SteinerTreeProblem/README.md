@@ -15,10 +15,10 @@ Any situation where the task is minimize cost of connection among some important
 ## Modeling with Linear Programming
 
 ##### Decision variable
-* Xi | i ∈ E (*edges*):  *Xi is the color of the i edge.*
+* Xi | i ∈ E. *Xi indicates if the i edge belongs to the final path)**
 
 ##### Constraints
-* i = (a, b) and j = (a, c). ∀ i, j ∈ E, Xi ≠ Xj
+* ∀ v ∈ T, ∃ w = (v, u) | X[w] = True
 
 ##### Objective
 * min ( ∑ cost[Xi], from i = 0 to ||E|| )
