@@ -21,18 +21,33 @@ int main()
       graph[u].push_back({v, c, i}), graph[v].push_back({u, c, i}), simplifiedGraph[u].push_back({v, c, i}), edgeCosts[i] = c;
     }
     int t; scanf("%d", &t);
-    int obligatedVertices[t]; for (int i = 0; i < t; i ++) { scanf("%d", &obligatedVertices[i]); obligatedVertices[i] --; }
+    int obligatedVertices[t]; bool isObligated[v]; memset(isObligated, false, sizeof(isObligated));
+    for (int i = 0; i < t; i ++) { scanf("%d", &obligatedVertices[i]); obligatedVertices[i] --; isObligated[obligatedVertices[i]] = true; }
 
   // Decision Variables:
-    IloBoolVarArray edges(env, e);
+    IloBoolVarArray edges(env, e), vertices(env, v), originAndDestination(env, v);
 
   // Restrictions:
-    // Obligated vertices
+    // Obligated vertices:
       for (int i = 0; i < t; i ++)
       {
         IloExpr connectionsCount(env);
-        for (auto e: graph[obligatedVertices[i]]) connectionsCount += edges[e.edgeNumber];
+        for (auto edge: graph[obligatedVertices[i]]) connectionsCount += edges[edge.edgeNumber];
         steinerTreeProblem.add(connectionsCount >= 1);
+      }
+    // Origin and Destination must be only 2 vertices:
+      IloExpr verticesCount(env);
+      for (int i = 0; i < v; i ++) verticesCount += originAndDestination[i];
+      steinerTreeProblem.add(verticesCount == 2);
+    // Origin and Destination can't be a chosen vertex:
+      for (int i = 0; i < v; i ++)
+        steinerTreeProblem.add(vertices[i] + originAndDestination[i] <= 1);
+    // Vertices must have 2 edges, except for Origin and Destination which must have 1 edge
+      for (int i = 0; i < v; i ++)
+      {
+        IloExpr connectionsCount(env);
+        for (auto edge: graph[i]) connectionsCount += edges[edge.edgeNumber];
+        steinerTreeProblem.add(connectionsCount == 2 * vertices[i] + 1 * originAndDestination[i]);
       }
 
   // Objective Function:
@@ -46,8 +61,8 @@ int main()
     IloNumArray edgesSolution(env, e); cplex.getValues(edgesSolution, edges);
     for (int i = 0; i < v; i ++)
     {
-      printf("%d:", i + 1);
-      for (auto e: simplifiedGraph[i]) if (edgesSolution[e.edgeNumber]) printf(" (%d, %d)", e.to + 1, e.cost);
+      printf("%d(%c):", i + 1, isObligated[i] ? 'T' : 'v');
+      for (auto edge: simplifiedGraph[i]) if (edgesSolution[edge.edgeNumber]) printf(" (%d, %d)", edge.to + 1, edge.cost);
       printf("\n");
     }
   
