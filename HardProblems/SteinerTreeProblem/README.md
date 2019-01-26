@@ -15,7 +15,7 @@ Any situation where the task is minimize cost of connection among some important
 ## Modeling with Linear Programming
 
 ##### Decision variable
-* Xi | i ∈ E. *Xi indicates if the i edge belongs to the final path)**
+* Xi | i ∈ E. *Xi indicates if the i edge belongs to the final path)*
 
 ##### Constraints
 * ∀ v ∈ T, ∃ w = (v, u) | X[w] = True
