@@ -77,13 +77,19 @@ int main()
       solutions[i] = IloNumArray(env, sizes[i].patterns.size());
       cplex.getValues(solutions[i], x[i]);
     }
-    printf("\tcans: %.0lf\n", solutionCans);
+    printf("\tcans: %d\n", solutionCans);
+    int leftBody = - solutionCans, leftLid = - 2 * solutionCans;
     for (int i = 0; i < sheetsSizes; i ++)
     {
       printf("\tsheet size %d:\n", i + 1);
       for (int j = 0; j < sizes[i].patterns.size(); j ++)
+      {
         printf("\t\tpattern %d: %.0lf\n", j + 1, solutions[i][j]);
+        leftBody += solutions[i][j] * sizes[i].patterns[j].bodies;
+        leftLid += solutions[i][j] * sizes[i].patterns[j].lids;
+      }
     }
+    printf("\tleft: %d bodies and %d lids\n", leftBody, leftLid);
 
   env.end();
   return(0);

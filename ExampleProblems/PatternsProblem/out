@@ -20,7 +20,7 @@ Root relaxation solution time = 0.00 sec. (0.01 ticks)
 *     0+    0                            0.0000    59780.0000              --- 
 *     0+    0                        18225.0000    59780.0000           228.01%
 *     0     0      integral     0    31500.0000    31500.0000        5    0.00%
-Elapsed time = 0.01 sec. (0.04 ticks, tree = 0.00 MB, solutions = 3)
+Elapsed time = 0.00 sec. (0.04 ticks, tree = 0.00 MB, solutions = 3)
 
 Root node processing (before b&c):
   Real time             =    0.01 sec. (0.04 ticks)
@@ -31,10 +31,11 @@ Parallel b&c, 12 threads:
                           ------------
 Total (root+branch&cut) =    0.01 sec. (0.04 ticks)
 maxProfit: 31500.000
-	cans: 0
+	cans: 630
 	sheet size 1:
 		pattern 1: -0
 		pattern 2: 65
 		pattern 3: 135
 	sheet size 2:
 		pattern 1: 45
+	left: 0 bodies and 0 lids
