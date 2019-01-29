@@ -29,7 +29,7 @@ int main()
     IloExpr vLeftSum(env), vRightSum(env);
     for (int i = 0; i < v1; i ++) vLeftSum += vLeft[i];
     for (int i = 0; i < v2; i ++) vRightSum += vRight[i];
-    // Bipartite:
+    // Balanced:
       maximumBalancedBicliqueProblem.add(vLeftSum == vRightSum);
     // Clique:
       for (auto edge: revEdges)
