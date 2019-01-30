@@ -15,10 +15,20 @@ Any situation where the task is minimize cost of connection among some important
 ## Modeling with Linear Programming
 
 ##### Decision variable
-* Xi | i ∈ E. *Xi indicates if the i edge belongs to the final path)*
+* Xi | i ∈ Edges. *Xi indicates if the i-th edge belongs to the final tree*
+* Ui | i ∈ V. *Ui indicates if the i-th vertice belongs to the final tree*
+* Fij | i ∈ Edges, j ∈ {0, 1}. *Fi0 is the flow in the i-th edge to the source (of that edge) and Fi1 the flow to the target*
+
 
 ##### Constraints
-* ∀ v ∈ T, ∃ w = (v, u) | X[w] = True
+* ∀ v ∈ T, ∃ w ∈ Edges | w = (v, *) and X[w] = True. *Each terminal must have at least one edge in the final tree*
+* ∀ v ∈ T, U[v] = True. *All terminals must be in the final tree*
+* ∀ v ∉ T, ∃ e1, e2 ∈ Edges | X[e1] = X[e2] = True. *Each non-terminal must have zero, two or more edges in the final tree*
+* ||U|| = ||X|| + 1. *Tree definition* 
+
+* ∀ e: Xeu + X ev = 2be
+* ∀ v: ∑xeu ≤ 2 - 2/||U||
 
 ##### Objective
-* min ( ∑ cost[Xi], from i = 0 to ||E|| )
+* min ( ∑ cost[Xi], from i = 0 to ||Edges|| )
+
