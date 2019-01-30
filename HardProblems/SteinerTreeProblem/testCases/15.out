@@ -1,0 +1,63 @@
+Tried aggregator 1 time.
+MIP Presolve eliminated 111 rows and 18 columns.
+MIP Presolve modified 53 coefficients.
+Reduced MIP has 183 rows, 365 columns, and 1027 nonzeros.
+Reduced MIP has 123 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.77 ticks)
+Found incumbent of value 641.000000 after 0.00 sec. (1.72 ticks)
+Probing time = 0.00 sec. (0.37 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 183 rows, 365 columns, and 1027 nonzeros.
+Reduced MIP has 123 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.62 ticks)
+Probing time = 0.00 sec. (0.35 ticks)
+Clique table members: 28.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.88 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          641.0000        0.0000           100.00%
+      0     0      106.0000     7      641.0000      106.0000      106   83.46%
+      0     0      107.3945     6      641.0000      Cuts: 32      125   83.25%
+      0     0      108.9918     5      641.0000      Cuts: 21      138   83.00%
+*     0+    0                          109.0000      108.9918             0.01%
+      0     0        cutoff            109.0000      109.0000      138    0.00%
+Elapsed time = 0.05 sec. (16.08 ticks, tree = 0.01 MB, solutions = 2)
+
+Cover cuts applied:  3
+Implied bound cuts applied:  5
+Flow cuts applied:  5
+Mixed integer rounding cuts applied:  2
+Lift and project cuts applied:  2
+Gomory fractional cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =    0.05 sec. (16.11 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.05 sec. (16.11 ticks)
+TreeCost: 109
+1(T):
+2(T):
+3(T): (6, 3) (15, 5) (8, 10)
+4(T): (2, 0)
+5(v): (14, 3) (1, 21) (17, 3) (7, 13) (3, 1)
+6(T): (16, 12)
+7(T):
+8(T): (11, 10)
+9(T):
+10(T): (11, 6)
+11(T): (12, 1)
+12(T): (2, 11) (9, 10)
+13(v):
+14(T):
+15(T):
+16(T):
+17(T):

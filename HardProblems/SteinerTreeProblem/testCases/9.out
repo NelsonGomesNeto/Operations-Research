@@ -1,0 +1,56 @@
+Tried aggregator 1 time.
+MIP Presolve eliminated 57 rows and 12 columns.
+MIP Presolve modified 14 coefficients.
+Reduced MIP has 86 rows, 157 columns, and 432 nonzeros.
+Reduced MIP has 53 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.26 ticks)
+Found incumbent of value 747.000000 after 0.00 sec. (0.68 ticks)
+Probing time = 0.00 sec. (0.10 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 86 rows, 157 columns, and 432 nonzeros.
+Reduced MIP has 53 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.28 ticks)
+Probing time = 0.00 sec. (0.09 ticks)
+Clique table members: 7.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.33 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          747.0000        0.0000           100.00%
+      0     0      181.3077     7      747.0000      181.3077       57   75.73%
+*     0     0      integral     0      185.0000      Cuts: 32       75    0.00%
+      0     0        cutoff            185.0000      185.0000       75    0.00%
+Elapsed time = 0.03 sec. (4.83 ticks, tree = 0.01 MB, solutions = 2)
+
+Cover cuts applied:  2
+Implied bound cuts applied:  6
+Flow cuts applied:  6
+Mixed integer rounding cuts applied:  2
+Gomory fractional cuts applied:  5
+
+Root node processing (before b&c):
+  Real time             =    0.03 sec. (4.84 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.03 sec. (4.84 ticks)
+TreeCost: 185
+1(T): (2, 6)
+2(T): (13, 15)
+3(T): (10, 37) (5, 0)
+4(T):
+5(T): (8, 13)
+6(T): (7, 27)
+7(T):
+8(T): (9, 6)
+9(T): (4, 32) (7, 3)
+10(T):
+11(T): (3, 28)
+12(v):
+13(T): (5, 18)

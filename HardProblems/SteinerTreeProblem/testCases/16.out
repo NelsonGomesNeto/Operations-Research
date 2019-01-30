@@ -1,0 +1,61 @@
+Tried aggregator 1 time.
+MIP Presolve eliminated 21 rows and 11 columns.
+MIP Presolve modified 76 coefficients.
+Reduced MIP has 177 rows, 249 columns, and 825 nonzeros.
+Reduced MIP has 89 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.66 ticks)
+Found incumbent of value 609.000000 after 0.00 sec. (1.46 ticks)
+Probing time = 0.00 sec. (0.26 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 177 rows, 249 columns, and 825 nonzeros.
+Reduced MIP has 89 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.54 ticks)
+Probing time = 0.00 sec. (0.25 ticks)
+Clique table members: 99.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.33 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          609.0000        0.0000           100.00%
+*     0+    0                          192.0000        0.0000           100.00%
+      0     0       60.0000     4      192.0000       60.0000       32   68.75%
+*     0+    0                           77.0000       60.0000            22.08%
+      0     0       62.8571     6       77.0000      Cuts: 27       69   18.37%
+*     0     0      integral     0       65.0000      Cuts: 18       76    0.00%
+      0     0        cutoff             65.0000       65.0000       76    0.00%
+Elapsed time = 0.03 sec. (7.51 ticks, tree = 0.01 MB, solutions = 4)
+
+Cover cuts applied:  4
+Implied bound cuts applied:  14
+Flow cuts applied:  5
+Mixed integer rounding cuts applied:  2
+Zero-half cuts applied:  1
+Gomory fractional cuts applied:  2
+
+Root node processing (before b&c):
+  Real time             =    0.03 sec. (7.53 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.03 sec. (7.53 ticks)
+TreeCost: 65
+1(v): (6, 1) (11, 3) (8, 24)
+2(v): (1, 5) (7, 8)
+3(v):
+4(v):
+5(T):
+6(T):
+7(v): (5, 2)
+8(T):
+9(v):
+10(v):
+11(T): (13, 22)
+12(v):
+13(T):
+14(v):

@@ -1,0 +1,61 @@
+Tried aggregator 1 time.
+MIP Presolve eliminated 116 rows and 27 columns.
+MIP Presolve modified 104 coefficients.
+Reduced MIP has 240 rows, 445 columns, and 1296 nonzeros.
+Reduced MIP has 151 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.96 ticks)
+Found incumbent of value 1099.000000 after 0.00 sec. (2.15 ticks)
+Probing time = 0.00 sec. (0.49 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 240 rows, 445 columns, and 1296 nonzeros.
+Reduced MIP has 151 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.78 ticks)
+Probing time = 0.00 sec. (0.46 ticks)
+Clique table members: 58.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.87 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                         1099.0000        0.0000           100.00%
+      0     0      102.4737     3     1099.0000      102.4737      111   90.68%
+*     0+    0                          105.0000      102.4737             2.41%
+      0     0        cutoff            105.0000                    122    0.00%
+Elapsed time = 0.05 sec. (10.04 ticks, tree = 0.01 MB, solutions = 2)
+
+Implied bound cuts applied:  2
+Flow cuts applied:  2
+Mixed integer rounding cuts applied:  1
+Gomory fractional cuts applied:  2
+
+Root node processing (before b&c):
+  Real time             =    0.05 sec. (10.07 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.05 sec. (10.07 ticks)
+TreeCost: 105
+1(v):
+2(T): (10, 0)
+3(T): (19, 17)
+4(T):
+5(T):
+6(T): (10, 2)
+7(T): (19, 6)
+8(v):
+9(T):
+10(T):
+11(T): (9, 13)
+12(T): (16, 7)
+13(T): (4, 8)
+14(v):
+15(T): (11, 20)
+16(T): (11, 6) (5, 1)
+17(v):
+18(T): (9, 5)
+19(T): (13, 3) (11, 6) (10, 11)

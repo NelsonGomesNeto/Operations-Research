@@ -1,0 +1,24 @@
+Found incumbent of value 98.000000 after 0.00 sec. (0.01 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 34 rows and 27 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.02 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.00 sec. (0.03 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.00 sec. (0.03 ticks)
+TreeCost: 98
+1(v):
+2(v):
+3(v):
+4(v):
+5(T):
+6(v):
+7(v):
+8(T): (9, 86)
+9(T): (5, 12)
