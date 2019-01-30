@@ -1,0 +1,44 @@
+Found incumbent of value 0.000000 after 0.00 sec. (0.00 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 29 rows and 3 columns.
+Reduced MIP has 64 rows, 21 columns, and 147 nonzeros.
+Reduced MIP has 21 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.15 ticks)
+Probing time = 0.00 sec. (0.03 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 64 rows, 21 columns, and 147 nonzeros.
+Reduced MIP has 21 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.12 ticks)
+Probing time = 0.00 sec. (0.03 ticks)
+Clique table members: 153.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.15 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000       21.0000              --- 
+*     0+    0                            2.0000       21.0000           950.00%
+*     0+    0                            4.0000       21.0000           425.00%
+      0     0        8.5714    21        4.0000        8.5714       34  114.29%
+      0     0        5.7600    13        4.0000       Cuts: 2       52   44.00%
+      0     0        5.4400    13        4.0000       Cuts: 2       59   36.00%
+      0     0        cutoff              4.0000        4.0000       59    0.00%
+Elapsed time = 0.02 sec. (1.61 ticks, tree = 0.01 MB, solutions = 3)
+
+Zero-half cuts applied:  1
+Lift and project cuts applied:  2
+
+Root node processing (before b&c):
+  Real time             =    0.02 sec. (1.61 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.02 sec. (1.61 ticks)
+MaximumVertices: 4
+Left: 10 16
+Right: 5 7
