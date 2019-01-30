@@ -45,7 +45,8 @@ int main()
     cplex.getValues(vLeftSolution, vLeft); cplex.getValues(vRightSolution, vRight);
     printf("Left:"); for (int i = 0; i < v1; i ++) if (vLeftSolution[i]) printf(" %d", i + 1);
     printf("\nRight:"); for (int i = 0; i < v2; i ++) if (vRightSolution[i]) printf(" %d", i + 1);
-    printf("\nEdges:\n"); for (auto edge: edges) if (vLeftSolution[edge.first] && vRightSolution[edge.second]) printf("\t%d %d\n", edge.first + 1, edge.second + 1);
+    printf("\n");
+    // printf("\nEdges:\n"); for (auto edge: edges) if (vLeftSolution[edge.first] && vRightSolution[edge.second]) printf("\t%d %d\n", edge.first + 1, edge.second + 1);
   
   env.end();
   return(0);
