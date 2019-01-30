@@ -1,0 +1,54 @@
+Found incumbent of value 8.000000 after 0.00 sec. (0.01 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 2 rows and 12 columns.
+Reduced MIP has 16 rows, 24 columns, and 48 nonzeros.
+Reduced MIP has 24 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.03 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 8 rows and 12 columns.
+Reduced MIP has 8 rows, 12 columns, and 24 nonzeros.
+Reduced MIP has 12 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.02 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 8 rows, 12 columns, and 24 nonzeros.
+Reduced MIP has 12 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.02 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Clique table members: 8.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 12 threads.
+Root relaxation solution time = 0.00 sec. (0.01 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            8.0000        5.0000            37.50%
+      0     0        cutoff              8.0000                      1    0.00%
+
+Root node processing (before b&c):
+  Real time             =    0.01 sec. (1.14 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.01 sec. (1.14 ticks)
+MinimumColoringCost: 8
+1:
+2:
+3: (8, 1)
+4:
+5:
+6: (1, 2)
+7: (15, 1)
+8:
+9:
+10: (11, 1) (2, 2)
+11:
+12:
+13: (1, 1)
+14:
+15:

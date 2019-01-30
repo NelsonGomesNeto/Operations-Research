@@ -1,0 +1,17 @@
+Found incumbent of value 1.000000 after 0.00 sec. (0.00 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 1 rows and 1 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.00 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.00 sec. (0.00 ticks)
+Parallel b&c, 12 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.00 sec. (0.00 ticks)
+MinimumColoringCost: 1
+1: (2, 1)
+2:
