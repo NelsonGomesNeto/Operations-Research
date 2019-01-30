@@ -10,7 +10,7 @@ int main()
   IloCplex cplex(minimumCostEdgeColoringProblem);
 
   // Statement Data:
-    int v, e, maxColors; scanf("%d %d", &v, &e); maxColors = (e >> 1) + (e & 1);
+    int v, e, maxColors; scanf("%d %d", &v, &e); maxColors = e;
     vector<pair<int, int>> graph[v], simplefiedGraph[v]; // {vertex, edge number}
     for (int i = 0, u, v; i < e; i ++)
     {
@@ -45,7 +45,15 @@ int main()
     minimumCostEdgeColoringProblem.add(IloMinimize(env, coloringCost));
 
   // Get Solution:
-    cplex.solve();
+    try
+    {
+      cplex.solve();
+    }
+    catch(IloException e)
+    {
+      std::cerr << e.getMessage() << '\n';
+    }
+    
     printf("MinimumColoringCost: %.0lf\n", cplex.getObjValue());
     IloArray<IloNumArray> edgesColorsSolution(env, e);
     for (int i = 0; i < e; i ++)
