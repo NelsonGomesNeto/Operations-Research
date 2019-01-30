@@ -2,7 +2,7 @@
 ### What's the problem?
 > Find a balanced biclique (complete bipartite subgraph with the same vertex number in each part) in G with the maximum number of vertex.
 
-![Problem](https://github.com/NelsonGomesNeto/Operations-Research/blob/master/HardProblems/MaximumBalancedBicliqueProblem/balancedBiclique.png)
+![Problem](https://github.com/NelsonGomesNeto/Operations-Research/blob/master/HardProblems/MaximumBalancedBicliqueProblem/balancedBiclique.PNG)
 
 ## Modeling with Linear Programming
 
