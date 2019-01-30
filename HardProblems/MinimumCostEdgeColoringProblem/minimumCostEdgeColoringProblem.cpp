@@ -45,15 +45,7 @@ int main()
     minimumCostEdgeColoringProblem.add(IloMinimize(env, coloringCost));
 
   // Get Solution:
-    try
-    {
-      cplex.solve();
-    }
-    catch(IloException e)
-    {
-      std::cerr << e.getMessage() << '\n';
-    }
-    
+    cplex.solve();
     printf("MinimumColoringCost: %.0lf\n", cplex.getObjValue());
     IloArray<IloNumArray> edgesColorsSolution(env, e);
     for (int i = 0; i < e; i ++)
