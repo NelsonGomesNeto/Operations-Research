@@ -15,7 +15,7 @@ for terminal in terminals:
     prev = terminal
 while (len(edges) < m):
     u, v = randint(1, n), randint(1, n)
-    if (tuple((v, u)) in edges or u == v):
+    while (tuple((v, u)) in edges or u == v):
         u, v = randint(1, n), randint(1, n)
     edges.add(tuple((u, v)))
 print(n, m)

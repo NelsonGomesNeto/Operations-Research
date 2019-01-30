@@ -1,61 +1,22 @@
 Tried aggregator 1 time.
-MIP Presolve eliminated 31 rows and 14 columns.
-MIP Presolve modified 82 coefficients.
-Reduced MIP has 172 rows, 245 columns, and 788 nonzeros.
-Reduced MIP has 87 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.00 sec. (0.64 ticks)
-Found incumbent of value 667.000000 after 0.00 sec. (1.41 ticks)
-Probing time = 0.00 sec. (0.23 ticks)
-Tried aggregator 1 time.
-Reduced MIP has 172 rows, 245 columns, and 788 nonzeros.
-Reduced MIP has 87 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.00 sec. (0.52 ticks)
-Probing time = 0.00 sec. (0.22 ticks)
-Clique table members: 80.
-MIP emphasis: balance optimality and feasibility.
-MIP search method: dynamic search.
-Parallel mode: deterministic, using up to 12 threads.
-Root relaxation solution time = 0.00 sec. (0.43 ticks)
-
-        Nodes                                         Cuts/
-   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
-
-*     0+    0                          667.0000        0.0000           100.00%
-      0     0       75.5000     4      667.0000       75.5000       52   88.68%
-      0     0       77.1500     9      667.0000      Cuts: 30       99   88.43%
-      0     0       84.0556     6      667.0000      Cuts: 25      133   87.40%
-*     0+    0                           86.0000       84.0556             2.26%
-      0     0        cutoff             86.0000       86.0000      133    0.00%
-Elapsed time = 0.04 sec. (6.63 ticks, tree = 0.01 MB, solutions = 2)
-
-Cover cuts applied:  3
-Implied bound cuts applied:  7
-Flow cuts applied:  6
-Zero-half cuts applied:  1
-Gomory fractional cuts applied:  1
+MIP Presolve eliminated 36 rows and 26 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.02 ticks)
 
 Root node processing (before b&c):
-  Real time             =    0.04 sec. (6.65 ticks)
+  Real time             =    0.00 sec. (0.03 ticks)
 Parallel b&c, 12 threads:
   Real time             =    0.00 sec. (0.00 ticks)
   Sync time (average)   =    0.00 sec.
   Wait time (average)   =    0.00 sec.
                           ------------
-Total (root+branch&cut) =    0.04 sec. (6.65 ticks)
-TreeCost: 86
-1(v):
-2(T): (12, 2)
-3(T):
-4(v): (9, 8) (3, 1)
+Total (root+branch&cut) =    0.00 sec. (0.03 ticks)
+TreeCost: 307
+1(T): (2, 32)
+2(T): (3, 94)
+3(T): (4, 65)
+4(T): (6, 39)
 5(v):
-6(T): (16, 7)
-7(T): (13, 6)
-8(v):
-9(v): (16, 13)
-10(v):
-11(T): (12, 18)
-12(T):
-13(T): (16, 11) (14, 6)
-14(T):
-15(v):
-16(v): (11, 14)
+6(T): (7, 58)
+7(T): (8, 19)
+8(T):
