@@ -55,7 +55,7 @@ int main()
       for (int i = 0; i < v; i ++) verticesCount += vertices[i];
       for (int i = 0; i < e; i ++) edgesCount += edges[i];
       steinerTreeProblem.add(verticesCount == edgesCount + 1);
-    // Cycle: ????????????????
+    // Cycle:
       // Edges sends flow of 2:
         for (int i = 0; i < e; i ++) steinerTreeProblem.add(flows[i][0] + flows[i][1] == 2 * edges[i]);
       // Vertices receives flow < 2
