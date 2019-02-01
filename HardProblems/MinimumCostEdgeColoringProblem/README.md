@@ -11,9 +11,9 @@
 
 ##### Restrictions
 * Each edge must have only a single color:
-  * ∀ i ∈ E: ∑ Xi == 1
+  * ∀ i ∈ E; ∑ Xi == 1
 * Adjacent edges must have different colors
-  * ∀ i, j ∈ E and ∀ c ∈ C | i = (a, b) and j = (a, c): Xic + Xjc <= 1
+  * ∀ i, j ∈ E and ∀ c ∈ C | i = (a, b) and j = (a, c); Xic + Xjc <= 1
 
 ##### Objective Function
 * Minimize the total cost of coloring the edges
