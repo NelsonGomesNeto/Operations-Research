@@ -2,17 +2,24 @@
 #define SUDOKU_HPP
 
 #include <utility>
+#include <vector>
+// #include <ilcplex/ilocplex.h>
 using namespace std;
 
 class Sudoku {
 private:
-  int **board, ****grid, size, sqrtSize;
+  int **board, size, sqrtSize;
   bool **lines, **columns, ***grids; // used i-th number
-  int **nextInLines, **nextInColumns, ***nextInGrids;
-  int **visited;
+  vector<int> **allowedNumbers;
+  int **visited, **fixes;
   pair<int, int> *numbersCount; // first numberCount, second number
+  pair<int, pair<int, int>> *emptyCells; int emptyCellsSize;
   bool generatePuzzleDFS(int i = 0, int j = 0);
+  bool generatePuzzleDFSEmptyCells(int e = 0);
   void fillDiagonals();
+  bool fillAllowedNumbers(int i = 0, int j = 0, bool avoidDone = true);
+  void fillEmptyCells();
+  void fixBoard(int i = 0, int j = 0);
 public:
   Sudoku(int sqrtSize);
   void printBoard();
