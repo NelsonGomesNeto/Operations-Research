@@ -145,31 +145,42 @@ bool Sudoku::fillAllowedNumbers(int i, int j, bool avoidDone) {
 }
 
 void Sudoku::fixBoard(int i, int j) {
-  this->fillAllowedNumbers(0, 0, false);
-  int fixed = 0;
-  int ni = i, nj = j;
-  i = 0, j = 0;
-  for (; i < this->size; i ++, j = 0)
-    for (; j < this->size; j ++) {
-      if (this->board[i][j] && this->allowedNumbers[i][j].size() > 1) {
-        int ii = i / this->sqrtSize, jj = j / this->sqrtSize;
-        // for (int k: this->allowedNumbers[i][j])
-        for (int kk = rand() % this->allowedNumbers[i][j].size(), a = 0; a < this->allowedNumbers[i][j].size(); a ++, kk = (kk + 1) % this->allowedNumbers[i][j].size()) {
-          int k = this->allowedNumbers[i][j][kk];
-          if (k != this->board[i][j] && !this->lines[i][k] && !this->columns[j][k] && !this->grids[ii][jj][k]) {
-            this->lines[i][k] = this->columns[j][k] = this->grids[ii][jj][k] = true;
-            int aux = this->board[i][j];
-            this->board[i][j] = k;
-            k = aux;
-            this->lines[i][k] = this->columns[j][k] = this->grids[ii][jj][k] = false;
-            fixed ++;
-            break;
-          }
-        }
-      }
-    }
-  if (fixed) printf("Fixing %d at %d %d\n", fixed, ni, nj);
-  this->fillAllowedNumbers(0, 0);
+  // this->fillAllowedNumbers(0, 0, false);
+  // int fixed = 0;
+  // int ni = i, nj = j;
+  // i = 0, j = 0;
+  // for (; i < this->size; i ++, j = 0)
+  //   for (; j < this->size; j ++) {
+  //     if (this->board[i][j] && this->allowedNumbers[i][j].size() > 1) {
+  //       int ii = i / this->sqrtSize, jj = j / this->sqrtSize;
+  //       // for (int k: this->allowedNumbers[i][j])
+  //       for (int kk = rand() % this->allowedNumbers[i][j].size(), a = 0; a < this->allowedNumbers[i][j].size(); a ++, kk = (kk + 1) % this->allowedNumbers[i][j].size()) {
+  //         int k = this->allowedNumbers[i][j][kk];
+  //         if (k != this->board[i][j] && !this->lines[i][k] && !this->columns[j][k] && !this->grids[ii][jj][k]) {
+  //           this->lines[i][k] = this->columns[j][k] = this->grids[ii][jj][k] = true;
+  //           int aux = this->board[i][j];
+  //           this->board[i][j] = k;
+  //           k = aux;
+  //           this->lines[i][k] = this->columns[j][k] = this->grids[ii][jj][k] = false;
+  //           fixed ++;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  // if (fixed) printf("Fixing %d at %d %d\n", fixed, ni, nj);
+
+  int k = rand() % this->sqrtSize, amount = 1;
+  for (int i = 0; i < amount; i ++) {
+    int li = k*this->sqrtSize + rand() % this->sqrtSize, lj = k*this->sqrtSize + rand() % this->sqrtSize;
+    int hi = k*this->sqrtSize + rand() % this->sqrtSize, hj = k*this->sqrtSize + rand() % this->sqrtSize;
+    int l = this->board[li][lj], h = this->board[hi][hj];
+    this->lines[li][l] = this->columns[lj][l] = this->grids[k][k][l] = false;
+    this->lines[hi][h] = this->columns[hj][h] = this->grids[k][k][h] = false;
+    this->lines[li][h] = this->columns[lj][h] = this->grids[k][k][h] = true;
+    this->lines[hi][l] = this->columns[hj][l] = this->grids[k][k][l] = true;
+    this->board[li][lj] = h, this->board[hi][hj] = l;
+  }
 }
 
 void Sudoku::fillDiagonals() {
@@ -195,7 +206,7 @@ void Sudoku::fillDiagonals() {
       }
 }
 
-int iterations, iterationsLimit = 1000000, r = 0;
+int iterations, iterationsLimit = 1000000000, r = 0;
 void Sudoku::generatePuzzle() {
   int start = 0;
   do {
@@ -208,9 +219,12 @@ void Sudoku::generatePuzzle() {
     else
     {
       this->fixBoard();
+      this->fillAllowedNumbers();
+      this->fillEmptyCells();
     }
     iterations = 0;
   } while (!this->generatePuzzleDFSEmptyCells(start));
+  // this->generatePuzzleCPLEX();
   printf("%s\n", this->isValid() ? "Valid" : "Invalid");
 }
 
@@ -232,7 +246,7 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   {
     int rr = rand() % 100;
     // if (rep > 1 && (rr < 70 || rr < 100*((double) e / this->emptyCellsSize))) rep = 2;
-    if (rep > 1 && rr < 100*((double) e / this->emptyCellsSize)) rep = 2;
+    if (rep > 1 && rr < 70*((double) e / this->emptyCellsSize)) rep = 2;
     // if (rep > 1 && rr < 70) rep = 2;
     else rep = 1;
   }
@@ -240,6 +254,7 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   for (int k = rand() % this->allowedNumbers[i][j].size(), a = 0, aa = 0, n = 0; a < this->allowedNumbers[i][j].size(); a ++, k = (k + 1) % this->allowedNumbers[i][j].size()) {
     n = this->allowedNumbers[i][j][k];
     if (this->lines[i][n] || this->columns[j][n] || this->grids[ii][jj][n]) continue; else aa ++;
+    // if (this->lines[i][n] || this->grids[ii][jj][n]) continue; else aa ++;
 
     this->board[i][j] = n, this->lines[i][n] = this->columns[j][n] = this->grids[ii][jj][n] = true;
     if (this->generatePuzzleDFSEmptyCells(e + 1)) return(true);
@@ -249,6 +264,78 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   }
   return(false);
 }
+
+// bool Sudoku::generatePuzzleCPLEX() {
+//   IloEnv env;
+//   IloModel sudoku(env, "Sudoku");
+//   IloCplex cplex(sudoku);
+//   // Numbers will be indexed by 0
+
+//   // Decision Variables:
+//     IloArray<IloArray<IloBoolVarArray>> boardNumber(env, this->size);
+//     for (int i = 0; i < this->size; i ++) {
+//       boardNumber[i] = IloArray<IloBoolVarArray>(env, this->size);
+//       for (int j = 0; j < this->size; j ++) {
+//         boardNumber[i][j] = IloBoolVarArray(env, this->size);
+//       }
+//     }
+
+//   // Restrictions:
+//     // Already Set:
+//       for (int i = 0; i < this->size; i ++)
+//         for (int j = 0; j < this->size; j ++)
+//           if (this->board[i][j])
+//             sudoku.add(boardNumber[i][j][this->board[i][j] - 1] == 1);
+//     // Cells:
+//       for (int i = 0; i < this->size; i ++)
+//         for (int j = 0; j < this->size; j ++)
+//           sudoku.add(IloSum(boardNumber[i][j]) == 1);
+//     // Lines and Columns:
+//     for (int i = 0; i < this->size; i ++) {
+//       for (int n = 0; n < this->size; n ++) {
+//         IloExpr numberInLineCount(env), numberInColumnCount(env);
+//         for (int j = 0; j < this->size; j ++) {
+//           numberInLineCount += boardNumber[i][j][n],
+//           numberInColumnCount += boardNumber[j][i][n];
+//         }
+//         sudoku.add(numberInLineCount == 1);
+//         sudoku.add(numberInColumnCount == 1);
+//       }
+//     }
+//     // Grids:
+//     for (int k = 0; k < this->sqrtSize; k ++)
+//       for (int m = 0; m < this->sqrtSize; m ++) {
+//         for (int n = 0; n < this->size; n ++) {
+//           IloExpr numberInGridCount(env);
+//           for (int ii = 0; ii < this->sqrtSize; ii ++)
+//             for (int jj = 0; jj < this->sqrtSize; jj ++)
+//               numberInGridCount += boardNumber[k*this->sqrtSize + ii][m*this->sqrtSize + jj][n];
+//           sudoku.add(numberInGridCount == 1);
+//         }
+//       }
+  
+//   // Objective Function:
+//     IloExpr totalSum(env);
+//     for (int i = 0; i < this->size; i ++)
+//       for (int j = 0; j < this->size; j ++)
+//         totalSum += IloSum(boardNumber[i][j]);
+//     sudoku.add(IloMaximize(env, totalSum));
+
+//   // Get Solution:
+//     cplex.solve();
+//     printf("Total Numbers: %0.lf\n", cplex.getObjValue());
+//     IloArray<IloArray<IloNumArray>> boardSolution(env, this->size);
+//     for (int i = 0; i < this->size; i ++) {
+//       boardSolution[i] = IloArray<IloNumArray>(env, this->size);
+//       for (int j = 0; j < this->size; j ++) {
+//         boardSolution[i][j] = IloNumArray(env, this->size);
+//         cplex.getValues(boardSolution[i][j], boardNumber[i][j]);
+//         for (int n = 0; n < this->size; n ++)
+//           if (boardSolution[i][j][n])
+//             this->board[i][j] = n + 1;
+//       }
+//     }
+// }
 
 bool Sudoku::generatePuzzleDFS(int i, int j) {
   if (i == this->size) return(true);

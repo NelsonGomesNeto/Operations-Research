@@ -1,0 +1,1 @@
+g++ *.cpp -o test -std=c++17 -static-libstdc++ -static-libgcc -w -O3 -m64 -O -fPIC -fexceptions -DNDEBUG -DIL_STD -I/mnt/d/WSL/cplex/cplex/include -I/mnt/d/WSL/cplex/concert/include -L/mnt/d/WSL/cplex/cplex/lib/x86-64_linux/static_pic -lilocplex -lcplex -L/mnt/d/WSL/cplex/concert/lib/x86-64_linux/static_pic -lconcert -lm -pthread -ldl

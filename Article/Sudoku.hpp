@@ -14,8 +14,10 @@ private:
   int **visited, **fixes;
   pair<int, int> *numbersCount; // first numberCount, second number
   pair<int, pair<int, int>> *emptyCells; int emptyCellsSize;
+  // void generateBasePuzzle();
   bool generatePuzzleDFS(int i = 0, int j = 0);
   bool generatePuzzleDFSEmptyCells(int e = 0);
+  bool generatePuzzleCPLEX();
   void fillDiagonals();
   bool fillAllowedNumbers(int i = 0, int j = 0, bool avoidDone = true);
   void fillEmptyCells();

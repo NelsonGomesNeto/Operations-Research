@@ -2,10 +2,11 @@ import os
 import time
 import matplotlib.pyplot as plot
 os.system("g++ *.cpp -o test -std=c++17 -O2")
+# os.system("sudo ./run.sh")
 
 times = []
 totalTime = time.time()
-for i in range(1000):
+for i in range(50):
     startTime = time.time()
     os.system("./test 6 > out")
     result = time.time() - startTime
