@@ -1,7 +1,7 @@
 1 - Backtracking:
   function canFill(cell)
     if (no more cells) return true
-    for number is allowedNumbers
+    for number in allowedNumbers
       board[cell] = number
       if (canFill(nextCell(cell)))
         return true
@@ -20,7 +20,7 @@
   function canFill(cell)
     if (no more cells) return true
     testAmount = random() < alpha ? 2 : 1
-    for number is allowedNumbers
+    for number in allowedNumbers
       board[cell] = number
       if (canFill(nextCell(cell)))
         return true
@@ -34,7 +34,7 @@
   function canFill(cell)
     if (no more cells) return true
     testAmount = random() < alpha*(filledCells / totalCells) ? 2 : 1
-    for number is allowedNumbers
+    for number in allowedNumbers
       board[cell] = number
       if (canFill(nextCell(cell)))
         return true

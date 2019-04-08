@@ -289,20 +289,20 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   if (iterations ++ > this->iterationsLimit) { return(false); }
 
   int i = this->emptyCells[e].second.first, j = this->emptyCells[e].second.second;
+  int ii = i / this->sqrtSize, jj = j / this->sqrtSize;
+
   if (j == 0 && !this->fillAllowedNumbers(i, j)) return(false);
-  if (this->allowedNumbers[i][j].size() == 0) return(false);
   bool isNewRecord = false;
   // if (this->visited[i][j] < 1 && e % 100 == 0) isNewRecord = true;
   if (this->visited[i][j] < 1) { /*printf("%d of %d\n", e, this->emptyCellsSize);*/ iterations = 0; }
   this->visited[i][j] = 1;
 
-  int ii = i / this->sqrtSize, jj = j / this->sqrtSize;
   int rep = 2;
   if (!isNewRecord)
   {
     int rr = rand() % 100;
-    // if (rep > 1 && (rr < 70 || rr < 100*((double) e / this->emptyCellsSize))) rep = 2;
-    if (rep > 1 && rr < alpha*((double) e / this->emptyCellsSize)) rep = 2;
+    // if (rep > 1 && rr < alpha*((double) e / this->emptyCellsSize)) rep = 2;
+    if (rep > 1 && rr*this->emptyCellsSize < alpha*e) rep = 2;
     // if (rep > 1 && rr < 70) rep = 2;
     else rep = 1;
   }
@@ -310,7 +310,6 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   for (int k = rand() % this->allowedNumbers[i][j].size(), a = 0, aa = 0, n = 0; a < this->allowedNumbers[i][j].size(); a ++, k = (k + 1) % this->allowedNumbers[i][j].size()) {
     n = this->allowedNumbers[i][j][k];
     if (this->lines[i][n] || this->columns[j][n] || this->grids[ii][jj][n]) continue; else aa ++;
-    // if (this->lines[i][n] || this->grids[ii][jj][n]) continue; else aa ++;
 
     this->board[i][j] = n, this->lines[i][n] = this->columns[j][n] = this->grids[ii][jj][n] = true;
     if (this->generatePuzzleDFSEmptyCells(e + 1)) return(true);
