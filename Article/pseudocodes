@@ -1,0 +1,45 @@
+1 - Backtracking:
+  function canFill(cell)
+    if (no more cells) return true
+    for number is allowedNumbers
+      board[cell] = number
+      if (canFill(nextCell(cell)))
+        return true
+      board[cell] = 0 // empty
+    return false
+
+  while (!canFill());
+
+1.1 - Backtracking with filled diagonals:
+  same "canFill" function, but:
+  do
+    fillDiagonals() // fills each diagonal block with numbers from 1 to n² in a random order
+  while (!canFill())
+
+2 - Big prune:
+  function canFill(cell)
+    if (no more cells) return true
+    testAmount = random() < alpha ? 2 : 1
+    for number is allowedNumbers
+      board[cell] = number
+      if (canFill(nextCell(cell)))
+        return true
+      board[cell] = 0 // empty
+      if (-- testAmount == 0) break
+    return false
+  
+  alpha = 0.7 was the best, according to our tests
+
+2.1 - Big weighted prune:
+  function canFill(cell)
+    if (no more cells) return true
+    testAmount = random() < alpha*(filledCells / totalCells) ? 2 : 1
+    for number is allowedNumbers
+      board[cell] = number
+      if (canFill(nextCell(cell)))
+        return true
+      board[cell] = 0 // empty
+      if (-- testAmount == 0) break
+    return false
+  
+  alpha = 1.0 was the best, according to our tests
