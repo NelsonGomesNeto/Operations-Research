@@ -297,12 +297,14 @@ bool Sudoku::generatePuzzleDFSEmptyCells(int e) {
   if (this->visited[i][j] < 1) { /*printf("%d of %d\n", e, this->emptyCellsSize);*/ iterations = 0; }
   this->visited[i][j] = 1;
 
+  // int rep = this->allowedNumbers[i][j].size();
   int rep = 2;
   if (!isNewRecord)
   {
     int rr = rand() % 100;
     // if (rep > 1 && rr < alpha*((double) e / this->emptyCellsSize)) rep = 2;
     if (rep > 1 && rr*this->emptyCellsSize < alpha*e) rep = 2;
+    // if (rep > 1 && rr < alpha) rep = 2;
     // if (rep > 1 && rr < 70) rep = 2;
     else rep = 1;
   }
