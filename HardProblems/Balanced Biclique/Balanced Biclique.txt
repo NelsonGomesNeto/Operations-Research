@@ -1,0 +1,15 @@
+Balanced Biclique
+
+Variables:
+bool x[V], y[V];
+
+Restrictions:
+for all i in V: x[i] + y[i] <= 1
+sum(x) = sum(y)
+for all (i, j) in E: x[i] + x[j] <= 1
+for all (i, j) in E: y[i] + y[j] <= 1
+for all (i, j) not in E: x[i] + y[j] <= 1
+for all (i, j) not in E: y[i] + x[j] <= 1
+
+Objective Function:
+max(sum(x) + sum(y))
